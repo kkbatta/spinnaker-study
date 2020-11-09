@@ -36,8 +36,8 @@ metadata:
     namespace: microservices
 spec:
     selector:
-        source: demo
         app: floral-madmax-microservice
+        source: demo
     ports:
         -   name: web
             protocol: TCP
