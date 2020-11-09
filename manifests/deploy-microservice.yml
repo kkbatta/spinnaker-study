@@ -3,8 +3,8 @@ apiVersion: apps/v1
 metadata:
     labels:
         app: floral-madmax-microservice
-        stack: frontend
         source: demo
+        stack: frontend  
     name: floral-madmax-microservice
     namespace: microservices
 spec:
