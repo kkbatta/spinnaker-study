@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: mild-temper-microservice
+        app: floral-madmax-microservice
         stack: frontend
         source: demo
-    name: mild-temper-microservice
+    name: floral-madmax-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: mild-temper-microservice
+            run: floral-madmax-microservice
     template:
         metadata:
             labels:
-                app: mild-temper-microservice
-                run: mild-temper-microservice
+                app: floral-madmax-microservice
+                run: floral-madmax-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/mild-temper-microservice
-                    name: mild-temper-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/floral-madmax-microservice
+                    name: floral-madmax-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: mild-temper-microservice-service
-    name: mild-temper-microservice-service
+        app: floral-madmax-microservice-service
+    name: floral-madmax-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: mild-temper-microservice
+        app: floral-madmax-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: floral-madmax-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /floral-madmax(/|$)(.*)
                         backend:
-                            serviceName: mild-temper-microservice-service
+                            serviceName: floral-madmax-microservice-service
                             servicePort: 30201
 
 
